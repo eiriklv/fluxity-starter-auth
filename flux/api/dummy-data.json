@@ -1,0 +1,65 @@
+{
+  "id": "alghero",
+  "name": "Alghero (Sardinia)",
+  "owner": ObjectId("54f1e1febb6610634a3fe5bd")
+}
+{
+  "id": "appennino",
+  "name": "Appennini (Umbria)",
+  "owner": ObjectId("54f1e1febb6610634a3fe5bd")
+}
+{
+  "id": "argentiera",
+  "name": "Argentiera (Sardinia)",
+  "owner": ObjectId("54f1e1febb6610634a3fe5bd")
+}
+{
+  "id": "assisi",
+  "name": "Assisi (Umbria)",
+  "owner": ObjectId("54f1e1febb6610634a3fe5bd")
+}
+{
+  "id": "firenze",
+  "name": "Firenze (Tuscany)",
+  "owner": ObjectId("54f1e1febb6610634a3fe5bd")
+}
+{
+  "id": "funes",
+  "name": "Funes (South Tyrol)",
+  "owner": ObjectId("54f1e1febb6610634a3fe5bd")
+}
+{
+  "id": "lessinia",
+  "name": "Lessinia (Veneto)",
+  "owner": ObjectId("54f1e1febb6610634a3fe5bd")
+}
+{
+  "id": "milano",
+  "name": "Milan (Lombardy)",
+  "owner": ObjectId("54f1e1febb6610634a3fe5bd")
+}
+{
+  "id": "palau",
+  "name": "Palau (Sardinia)",
+  "owner": ObjectId("54f243c5470f558973ad68e5")
+}
+{
+  "id": "portoferro",
+  "name": "Portoferro (Sardinia)",
+  "owner": ObjectId("54f243c5470f558973ad68e5")
+}
+{
+  "id": "sanpantaleo",
+  "name": "San Pantaleo (Sardinia)",
+  "owner": ObjectId("54f243c5470f558973ad68e5")
+}
+{
+  "id": "sanzeno",
+  "name": "San Zeno (Verona)",
+  "owner": ObjectId("54f243c5470f558973ad68e5")
+}
+{
+  "id": "verona",
+  "name": "Lasagna (Verona)",
+  "owner": ObjectId("54f243c5470f558973ad68e5")
+}
