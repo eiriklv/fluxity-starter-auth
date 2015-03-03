@@ -1,10 +1,12 @@
+'use strict';
+
 function _throw(m) {
   throw m;
 }
 
-var util = require('util');
-var convict = require('convict');
-var debug = require('debug')('app:config');
+const util = require('util');
+const convict = require('convict');
+const debug = require('debug')('app:config');
 
 process.on('uncaughtException', function(err) {
   debug('Caught exception without specific handler: ', err);
@@ -12,7 +14,7 @@ process.on('uncaughtException', function(err) {
   process.exit(1);
 });
 
-var config = convict({
+const config = convict({
   env: {
     doc: 'The application environment.',
     format: ['production', 'development'],
