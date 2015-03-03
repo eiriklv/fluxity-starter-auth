@@ -3,7 +3,6 @@
 const webpack = require('webpack');
 
 module.exports = {
-  // Entry point for static analyzer:
   entry: [
     'webpack-dev-server/client?http://localhost:3001',
     'webpack/hot/dev-server',
