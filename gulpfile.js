@@ -12,7 +12,7 @@ const fs = require('fs-extra');
 const minifyCSS = require('gulp-minify-css');
 const sass = require('gulp-ruby-sass');
 const webpack = require('webpack');
-const webpackConfig = require('./webpack.config');
+const webpackConfig = require('./config/webpack.config');
 const notifier = require('node-notifier');
 
 const paths = {
@@ -25,9 +25,10 @@ const paths = {
     'app-init-setup.js',
     'white-listed-env-vars.js',
     'cachebuster.js',
-    'config.js',
+    'config/**',
     'flux/**',
-    'server-api/**'
+    'server-api/**',
+    'session-api/**'
   ]
 };
 
