@@ -11,7 +11,7 @@ const Html = require('./components/Html.jsx');
 const Flux = require('fluxomorph');
 const stores = require('./stores');
 const actions = require('./actions');
-const api = require('./api');
+const services = require('./services');
 
 const renderApp = function(req, callback) {
   let flux = Flux({
@@ -30,7 +30,7 @@ const renderApp = function(req, callback) {
   });
 
   flux.addToContext('Router', router);
-  flux.addToContext('Api', api);
+  flux.addToContext('Services', services);
   flux.addToContext('User', {
     user: req.user,
     id: req.user ? req.user._id.toString() : null,

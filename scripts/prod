@@ -1,7 +1,0 @@
-export NODE_ENV=production \
-export PORT=3000 \
-export DEBUG=* \
-export API_URL=http://localhost:3000/api \
-export MONGO_URL=mongodb://localhost/isomorphic-boilerplate \
-
-gulp build && node build/app.js

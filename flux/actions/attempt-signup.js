@@ -3,7 +3,7 @@
 module.exports = function(context, payload, done) {
   done = done || function() {};
 
-  context.Api.signUp(payload, function(err, result) {
+  context.Services.signUp(payload, function(err, result) {
     if (err) {
       context.Dispatcher.emit('ADD_ALERT', err);
       return done();

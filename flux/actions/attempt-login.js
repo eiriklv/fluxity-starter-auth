@@ -3,7 +3,7 @@
 module.exports = function(context, payload, done) {
   done = done || function() {};
 
-  context.Api.logIn(payload, function(err, result) {
+  context.Services.logIn(payload, function(err, result) {
     if (err) {
       context.Dispatcher.emit('ADD_ALERT', err);
       return done();

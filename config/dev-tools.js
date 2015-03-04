@@ -25,15 +25,15 @@ const webpackServer = new WebpackDevServer(webpack(webpackConfig), {
 
 const renderSass = function(filename) {
   sass.render({
-    file: __dirname + '/style/main.scss',
-    outFile: __dirname + '/public/css/main.css',
+    file: __dirname + '/../style/main.scss',
+    outFile: __dirname + '/../public/css/main.css',
     sourceMap: true,
     success: function(data) {
       if (filename) debug('Changed ' + filename);
       
       async.series([
-        fs.writeFile.bind(fs, __dirname + '/public/css/main.css.map', data.map, 'utf-8'),
-        fs.writeFile.bind(fs, __dirname + '/public/css/main.css', data.css, 'utf-8')
+        fs.writeFile.bind(fs, __dirname + '/../public/css/main.css.map', data.map, 'utf-8'),
+        fs.writeFile.bind(fs, __dirname + '/../public/css/main.css', data.css, 'utf-8')
       ], function(err) {
         if (err) debug('error writing css/sourcemap to file:', err);
       });
@@ -44,7 +44,7 @@ const renderSass = function(filename) {
   });
 };
 
-chokidar.watch(__dirname + '/style', {
+chokidar.watch(__dirname + '/../style', {
   ignored: /[\/\\]\./
 }).on('all', function(event, filename) {
   let ext = filename.split('/').pop().split('.').pop();
@@ -53,6 +53,6 @@ chokidar.watch(__dirname + '/style', {
 });
 
 const lr = livereload.createServer();
-lr.watch(__dirname + '/public');
+lr.watch(__dirname + '/../public');
 
 renderSass();

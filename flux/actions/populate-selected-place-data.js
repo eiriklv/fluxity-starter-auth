@@ -5,7 +5,7 @@ module.exports = function(context, payload, done) {
 
   context.Dispatcher.emit('SET_SELECTED_PLACE_AS_LOADING');
 
-  context.Api.getPlaceDetails({
+  context.Services.getPlaceDetails({
     params: payload.params,
     query: payload.query,
     userId: context.User ? context.User.id : null

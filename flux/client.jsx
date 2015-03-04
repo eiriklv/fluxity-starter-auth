@@ -7,7 +7,7 @@ const routes = require('./routes.jsx');
 const Flux = require('fluxomorph');
 const stores = require('./stores');
 const actions = require('./actions');
-const api = require('./api');
+const services = require('./services');
 
 document.addEventListener('DOMContentLoaded', function(event) {
   let initialContext = window.__initialContext || {};
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   });
 
   flux.addToContext('Router', router);
-  flux.addToContext('Api', api);
+  flux.addToContext('Services', services);
 
   router.run(function(Handler, routerState) {
     flux.enableUpdates(true);

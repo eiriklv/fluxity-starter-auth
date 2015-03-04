@@ -1,7 +1,7 @@
 'use strict';
 
 const url = require('url');
-const config = require('./config');
+const config = require('./env');
 const debug = require('debug')('app:config');
 const express = require('express');
 const path = require('path');
@@ -61,7 +61,7 @@ module.exports.init = function() {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  let publicPath = path.join(__dirname, 'public');
+  let publicPath = path.join(__dirname, '/../public');
 
   app.use(express.static(publicPath));
 
