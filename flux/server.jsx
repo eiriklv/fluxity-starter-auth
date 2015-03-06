@@ -1,17 +1,26 @@
 'use strict';
 
 const debug = require('debug')('app:server-render');
+
 const React = require('react');
 const Router = require('react-router');
+const Flux = require('fluxomorph');
 const DocumentTitle = require('react-document-title');
 
-const routes = require('./routes.jsx');
 const Html = require('./components/Html.jsx');
-
-const Flux = require('fluxomorph');
+const routes = require('./routes.jsx');
 const stores = require('./stores');
 const actions = require('./actions');
 const services = require('./services');
+
+const createCallback = function(cb) {
+  let count = 0;
+
+  return function(err, redirect, html) {
+    if ((count++) > 0) return debug('trying to call callback twice (res.send) - server.jsx');
+    cb(err, redirect, html);
+  };
+}
 
 const renderApp = function(req, callback) {
   let flux = Flux({
@@ -68,15 +77,3 @@ module.exports = function(req, res, next) {
     res.send(html);
   })
 };
-
-function createCallback(cb) {
-  let count = 0;
-
-  return function(err, redirect, html) {
-    if ((count++) < 1) {
-      cb(err, redirect, html);
-    } else {
-      debug('trying to call callback twice (res.send) - server.jsx');
-    }
-  };
-}

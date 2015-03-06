@@ -1,11 +1,11 @@
 'use strict';
 
-var express = require('express');
-var router = express();
+const express = require('express');
+const handlers = require('../handlers/signup');
 
-var handlers = require('../handlers/signup');
+const router = express();
 
-exports = module.exports = function(path) {
+module.exports = function(path) {
   router.route(path)
     .post(handlers.create)
 

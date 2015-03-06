@@ -3,7 +3,7 @@
 const passport = require('passport');
 const async = require('async');
 
-exports = module.exports = function(req, res, next) {
+module.exports = function(req, res, next) {
   passport.authenticate('local-login', function(err, user, info) {
     if (err) return next(err);
 

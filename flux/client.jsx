@@ -2,9 +2,9 @@
 
 const React  = require('react');
 const Router = require('react-router');
-const routes = require('./routes.jsx');
-
 const Flux = require('fluxomorph');
+
+const routes = require('./routes.jsx');
 const stores = require('./stores');
 const actions = require('./actions');
 const services = require('./services');

@@ -1,8 +1,6 @@
 'use strict';
 
-module.exports = function(context, payload, done) {
-  done = done || function() {};
-
+module.exports = function(context, payload, done=(()=>{})) {
   context.Dispatcher.emit('SET_PLACES_AS_LOADING');
 
   context.Services.getPlaces({

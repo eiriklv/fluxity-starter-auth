@@ -1,11 +1,10 @@
 'use strict';
 
-var React = require('react');
-var Router = require('react-router');
-var RouteHandler = Router.RouteHandler;
-var Flux = require('fluxomorph');
+const React = require('react');
+const Flux = require('fluxomorph');
+const { RouteHandler } = require('react-router');
 
-var App = React.createClass({
+const App = React.createClass({
   mixins: [Flux.StateMixin('Flux')],
 
   childContextTypes: {
@@ -18,14 +17,14 @@ var App = React.createClass({
     RouterState: React.PropTypes.object.isRequired
   },
 
-  getChildContext: function() {
+  getChildContext() {
     return {
       Flux: this.props.Flux,
       RouterState: this.props.RouterState
     };
   },
 
-  render: function() {
+  render() {
     return (
       <RouteHandler
         State={this.state}

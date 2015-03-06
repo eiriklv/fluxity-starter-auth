@@ -2,11 +2,10 @@
 
 const React = require('react');
 const DocumentTitle = require('react-document-title');
-const Router = require('react-router');
-const Link = Router.Link;
+const { Link } = require('react-router');
 
 const Landing = React.createClass({
-  render: function() {
+  render() {
     return (
       <DocumentTitle title={'Landing'}>
         <div className='app'>

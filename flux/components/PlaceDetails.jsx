@@ -23,7 +23,7 @@ const PlaceDetails = React.createClass({
   },
 
   statics: {
-    willTransitionTo: function(transition, params, query, done) {
+    willTransitionTo(transition, params, query, done) {
       if (!transition.context.shouldUpdate) return done();
       
       transition.context.Actions.PopulateSelectedPlaceData({
@@ -33,8 +33,8 @@ const PlaceDetails = React.createClass({
     }
   },
 
-  render: function() {
-    let State = this.props.State;
+  render() {
+    let { State } = this.props;
 
     if (State.PlaceDetails.isLoading) return <Loading />;
     if (State.PlaceDetails.notFound) return <NotFound />;

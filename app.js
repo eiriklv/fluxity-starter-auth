@@ -1,12 +1,9 @@
 'use strict';
 
-require('node-jsx').install({
-  extension: '.jsx'
-});
-
 const debug = require('debug')('app:main');
 const config = require('./config/env');
 const appSetup = require('./config/app-init-setup');
+
 const app = appSetup.init();
 
 app.use('/api', require('./session-api'));

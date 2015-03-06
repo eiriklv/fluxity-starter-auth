@@ -1,10 +1,9 @@
 'use strict';
 
 const React = require('react');
-const Router = require('react-router');
-const Link = Router.Link;
-
 const qs = require('qs');
+const { Link } = require('react-router');
+
 const apiUrl = process.env.API_URL;
 const successRedirect = 'http://localhost:3000/login';
 
@@ -21,13 +20,13 @@ const Navigation = React.createClass({
     })
   },
 
-  attemptLogout: function(e) {
+  attemptLogout(e) {
     e.preventDefault();
 
     this.context.Flux.Actions.AttemptLogout();
   },
 
-  mapLinks: function(places) {
+  mapLinks(places) {
     return places.map(function(place) {
       return (
         <li key={'place-' + place._id}>
@@ -39,14 +38,14 @@ const Navigation = React.createClass({
     }.bind(this));
   },
 
-  getServerRedirect: function() {
+  getServerRedirect() {
     return qs.stringify({
       redirect: successRedirect
     });
   },
 
-  render: function() {
-    let State = this.props.State;
+  render() {
+    let { State } = this.props;
     let links = this.mapLinks(State.Places.data);
 
     return (

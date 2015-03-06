@@ -3,14 +3,14 @@
 const uuid = require('node-uuid');
 
 module.exports = {
-  getInitialState: function() {
+  getInitialState() {
     return [];
   },
   handlers: {
-    'DISMISS_ALL_ALERTS': function(context) {
+    DISMISS_ALL_ALERTS(context) {
       this.replaceState([]);
     },
-    'ADD_ALERT': function(context, alert) {
+    ADD_ALERT(context, alert) {
       if (!alert) return;
 
       alert.id = uuid.v4();

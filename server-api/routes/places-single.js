@@ -1,9 +1,9 @@
 'use strict';
 
-var express = require('express');
-var router = express();
+const express = require('express');
+const handlers = require('../handlers/places');
 
-var handlers = require('../handlers/places');
+const router = express();
 
 exports = module.exports = function(path) {
   router.route(path)

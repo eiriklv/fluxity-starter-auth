@@ -9,7 +9,7 @@ const Html = React.createClass({
     __initialContext: React.PropTypes.object.isRequired
   },
 
-  render: function() {
+  render() {
     return (
       <html>
         <head>

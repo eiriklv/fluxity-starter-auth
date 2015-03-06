@@ -1,7 +1,8 @@
 'use strict';
 
-var express = require('express');
-var router = express();
+const express = require('express');
+
+const router = express();
 
 require('./passport-init');
 

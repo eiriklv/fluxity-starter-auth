@@ -1,9 +1,9 @@
 'use strict';
 
 const React = require('react');
-const Router = require('react-router');
 const DocumentTitle = require('react-document-title');
-const RouteHandler = Router.RouteHandler;
+const { RouteHandler } = require('react-router');
+
 const Navigation = require('./Navigation.jsx');
 
 const Places = React.createClass({
@@ -22,7 +22,7 @@ const Places = React.createClass({
   },
 
   statics: {
-    willTransitionTo: function(transition, params, query, done) {
+    willTransitionTo(transition, params, query, done) {
       if (!transition.context.shouldUpdate) return done();
       
       transition.context.Actions.PopulatePlacesData({
@@ -32,7 +32,7 @@ const Places = React.createClass({
     }
   },
 
-  render: function() {
+  render() {
     let State = this.props.State;
 
     return (

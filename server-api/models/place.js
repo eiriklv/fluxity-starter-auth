@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const ObjectId = mongoose.Types.ObjectId;
+const { ObjectId } = mongoose.Types;
 
 const schema = mongoose.Schema({
   id: {

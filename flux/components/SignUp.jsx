@@ -2,10 +2,9 @@
 
 const React = require('react');
 const DocumentTitle = require('react-document-title');
-const Router = require('react-router');
-const Link = Router.Link;
-
 const qs = require('qs');
+const { Link } = require('react-router');
+
 const apiUrl = process.env.API_URL;
 const successRedirect = 'http://localhost:3000/places';
 
@@ -15,7 +14,7 @@ const SignUp = React.createClass({
     RouterState: React.PropTypes.object.isRequired
   },
 
-  attemptSignup: function(e) {
+  attemptSignup(e) {
     e.preventDefault();
 
     this.context.Flux.Actions.AttemptSignup({
@@ -24,25 +23,25 @@ const SignUp = React.createClass({
     });
   },
 
-  dismissAlerts: function(e) {
+  dismissAlerts(e) {
     e.preventDefault();
 
     this.context.Flux.Actions.DismissAlerts();
   },
 
-  renderAlerts: function() {
+  renderAlerts() {
     return this.props.State.Alerts.map(function(alert) {
       return <p key={alert.id}>{alert.message}</p>
     });
   },
 
-  getServerRedirect: function() {
+  getServerRedirect() {
     return qs.stringify({
       redirect: successRedirect
     });
   },
 
-  render: function() {
+  render() {
     return (
       <DocumentTitle title={'Signup'}>
         <div className='app'>

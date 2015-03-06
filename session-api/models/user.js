@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-var schema = mongoose.Schema({
+const schema = mongoose.Schema({
   email: {
     type: String,
     required: true

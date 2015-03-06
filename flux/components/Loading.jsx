@@ -3,7 +3,7 @@
 const React = require('react');
 
 const Loading = React.createClass({
-  render: function() {
+  render() {
     return <h3>Loading...</h3>;
   }
 });

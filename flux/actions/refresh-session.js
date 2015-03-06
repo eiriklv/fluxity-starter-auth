@@ -1,8 +1,6 @@
 'use strict';
 
-module.exports = function(context, done) {
-  done = done || function() {};
-
+module.exports = function(context, done=(()=>{})) {
   context.Services.getSession(context.User, function(err, result) {
     if (err) {
       context.Dispatcher.emit('ADD_ALERT', err);

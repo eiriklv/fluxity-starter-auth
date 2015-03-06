@@ -2,7 +2,7 @@
 
 const passport = require('passport');
 
-exports = module.exports = function(req, res, next) {
+module.exports = function(req, res, next) {
   passport.authenticate('local-signup', function(err, user, info) {
     if (err) return next(err);
 

@@ -1,8 +1,6 @@
 'use strict';
 
-module.exports = function(context, payload, done) {
-  done = done || function() {};
-
+module.exports = function(context, payload, done=(()=>{})) {
   context.Services.logOut(payload, function(err, result) {
     if (err) return done(err);
 

@@ -2,8 +2,8 @@
 
 const request = require('superagent');
 const apiUrl = process.env.API_URL;
-const places = require('./dummy-data').places;
-const user = require('./dummy-data').user;
+
+const { places, users } = require('./dummy-data');
 
 module.exports.getPlaces = function(payload, cb) {
   request

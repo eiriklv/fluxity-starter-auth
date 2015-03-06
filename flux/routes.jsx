@@ -1,10 +1,8 @@
 'use strict';
 
 const React = require('react');
-const Router = require('react-router');
-const Route = Router.Route;
-const DefaultRoute = Router.DefaultRoute;
-const NotFoundRoute = Router.NotFoundRoute;
+
+const { Route, DefaultRoute, NotFoundRoute } = require('react-router');
 
 const App = require('./components/App.jsx');
 const Home = require('./components/Home.jsx');

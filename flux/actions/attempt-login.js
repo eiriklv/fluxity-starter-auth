@@ -1,8 +1,6 @@
 'use strict';
 
-module.exports = function(context, payload, done) {
-  done = done || function() {};
-
+module.exports = function(context, payload, done=(()=>{})) {
   context.Services.logIn(payload, function(err, result) {
     if (err) {
       context.Dispatcher.emit('ADD_ALERT', err);
