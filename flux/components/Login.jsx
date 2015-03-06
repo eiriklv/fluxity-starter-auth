@@ -31,7 +31,9 @@ const Login = React.createClass({
 
   renderAlerts() {
     return this.props.State.Alerts.map(function(alert) {
-      return <p key={alert.id}>{alert.message}</p>
+      return (
+        <p key={alert.id}>{alert.message}</p>
+      );
     });
   },
 
