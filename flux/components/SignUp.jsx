@@ -1,11 +1,10 @@
 'use strict';
 
-const React = require('react');
-const DocumentTitle = require('react-document-title');
-const Router = require('react-router');
-const Link = Router.Link;
+import React from 'react';
+import DocumentTitle from 'react-document-title';
+import { Link } from 'react-router';
+import qs from 'qs';
 
-const qs = require('qs');
 const apiUrl = process.env.API_URL;
 const successRedirect = 'http://localhost:3000/places';
 
@@ -15,7 +14,7 @@ const SignUp = React.createClass({
     RouterState: React.PropTypes.object.isRequired
   },
 
-  attemptSignup: function(e) {
+  attemptSignup(e) {
     e.preventDefault();
 
     this.context.Flux.Actions.AttemptSignup({
@@ -24,25 +23,29 @@ const SignUp = React.createClass({
     });
   },
 
-  dismissAlerts: function(e) {
+  dismissAlerts(e) {
     e.preventDefault();
 
     this.context.Flux.Actions.DismissAlerts();
   },
 
-  renderAlerts: function() {
-    return this.props.State.Alerts.map(function(alert) {
-      return <p key={alert.id}>{alert.message}</p>
+  renderAlerts() {
+    return this.props.State.Alerts.map((alert) => {
+      return (
+        <p key={alert.id}>
+          {alert.message}
+        </p>
+      );
     });
   },
 
-  getServerRedirect: function() {
+  getServerRedirect() {
     return qs.stringify({
       redirect: successRedirect
     });
   },
 
-  render: function() {
+  render() {
     return (
       <DocumentTitle title={'Signup'}>
         <div className='app'>
@@ -99,4 +102,4 @@ const SignUp = React.createClass({
   }
 });
 
-module.exports = SignUp;
+export default SignUp;

@@ -1,11 +1,10 @@
 'use strict';
 
-const React = require('react');
-const DocumentTitle = require('react-document-title');
-const Router = require('react-router');
-const Link = Router.Link;
+import React from 'react';
+import DocumentTitle from 'react-document-title';
+import { Link } from 'react-router';
+import qs from 'qs';
 
-const qs = require('qs');
 const apiUrl = process.env.API_URL;
 const successRedirect = 'http://localhost:3000/places';
 
@@ -15,7 +14,7 @@ const Login = React.createClass({
     RouterState: React.PropTypes.object.isRequired
   },
 
-  attemptLogin: function(e) {
+  attemptLogin(e) {
     e.preventDefault();
 
     this.context.Flux.Actions.AttemptLogin({
@@ -24,25 +23,25 @@ const Login = React.createClass({
     });
   },
 
-  dismissAlerts: function(e) {
+  dismissAlerts(e) {
     e.preventDefault();
 
     this.context.Flux.Actions.DismissAlerts();
   },
 
-  renderAlerts: function() {
-    return this.props.State.Alerts.map(function(alert) {
+  renderAlerts() {
+    return this.props.State.Alerts.map((alert) => {
       return <p key={alert.id}>{alert.message}</p>
     });
   },
 
-  getServerRedirect: function() {
+  getServerRedirect() {
     return qs.stringify({
       redirect: successRedirect
     });
   },
 
-  render: function() {
+  render() {
     return (
       <DocumentTitle title={'Login'}>
         <div className='app'>
@@ -99,4 +98,4 @@ const Login = React.createClass({
   }
 });
 
-module.exports = Login;
+export default Login;

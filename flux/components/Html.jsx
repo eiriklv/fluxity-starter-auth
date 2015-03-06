@@ -1,6 +1,6 @@
 'use strict';
 
-const React = require('react');
+import React from 'react';
 
 const Html = React.createClass({
   propTypes: {
@@ -9,7 +9,7 @@ const Html = React.createClass({
     __initialContext: React.PropTypes.object.isRequired
   },
 
-  render: function() {
+  render() {
     return (
       <html>
         <head>
@@ -26,4 +26,4 @@ const Html = React.createClass({
   }
 });
 
-module.exports = Html;
+export default Html;

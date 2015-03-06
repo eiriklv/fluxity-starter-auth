@@ -1,17 +1,16 @@
 'use strict';
 
-require('node-jsx').install({
-  extension: '.jsx'
-});
+import config from './config/env';
+import * as appSetup from './config/app-init-setup';
+import sessionApi from './session-api';
+import serverApi from './server-api';
+import renderApp from './flux/server.jsx';
 
-const debug = require('debug')('app:main');
-const config = require('./config/env');
-const appSetup = require('./config/app-init-setup');
 const app = appSetup.init();
 
-app.use('/api', require('./session-api'));
-app.use('/api', require('./server-api'));
-app.use('/', require('./flux/server.jsx'));
+app.use('/api', sessionApi);
+app.use('/api', serverApi);
+app.use('/', renderApp);
 
 appSetup.connectToDatabase(config.get('mongo.url'));
 appSetup.handleErrors(app);

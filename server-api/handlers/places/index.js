@@ -1,6 +1,4 @@
 'use strict';
 
-exports = module.exports = {
-  get: require('./get'),
-  getAll: require('./get-all')
-};
+export { default as get } from './get';
+export { default as getAll } from './get-all';

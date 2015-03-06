@@ -1,11 +1,11 @@
 'use strict';
 
-const React = require('react');
+import React from 'react';
 
 const Index = React.createClass({
-  render: function() {
+  render() {
     return <p>Please select a place from the left.</p>;
   }
 });
 
-module.exports = Index;
+export default Index;

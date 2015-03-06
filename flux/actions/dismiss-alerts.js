@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = function(context, payload, done) {
-  done = done || function() {};
+export default (context, payload, done) => {
+  done = done || () => {};
   context.Dispatcher.emit('DISMISS_ALL_ALERTS');
   done();
 };

@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = function(context, payload, done) {
-  done = done || function() {};
+export default (context, payload, done) => {
+  done = done || () => {};
 
   context.Dispatcher.emit('SET_SELECTED_PLACE_AS_LOADING');
 
@@ -9,7 +9,7 @@ module.exports = function(context, payload, done) {
     params: payload.params,
     query: payload.query,
     userId: context.User ? context.User.id : null
-  }, function(err, place) {
+  }, (err, place) => {
     if (err || !place) {
       context.Dispatcher.emit('SET_SELECTED_PLACE_AS_NOT_FOUND');
       context.Dispatcher.emit('ADD_ALERT', err);

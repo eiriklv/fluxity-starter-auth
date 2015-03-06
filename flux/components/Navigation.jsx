@@ -1,10 +1,9 @@
 'use strict';
 
-const React = require('react');
-const Router = require('react-router');
-const Link = Router.Link;
+import React from 'react';
+import { Link } from 'react-router';
+import qs from 'qs';
 
-const qs = require('qs');
 const apiUrl = process.env.API_URL;
 const successRedirect = 'http://localhost:3000/login';
 
@@ -21,14 +20,14 @@ const Navigation = React.createClass({
     })
   },
 
-  attemptLogout: function(e) {
+  attemptLogout(e) {
     e.preventDefault();
 
     this.context.Flux.Actions.AttemptLogout();
   },
 
-  mapLinks: function(places) {
-    return places.map(function(place) {
+  mapLinks(places) {
+    return places.map((place) => {
       return (
         <li key={'place-' + place._id}>
           <Link to='place-details' params={{ id: place._id }}>
@@ -36,16 +35,16 @@ const Navigation = React.createClass({
           </Link>
         </li>
       );
-    }.bind(this));
+    });
   },
 
-  getServerRedirect: function() {
+  getServerRedirect() {
     return qs.stringify({
       redirect: successRedirect
     });
   },
 
-  render: function() {
+  render() {
     let State = this.props.State;
     let links = this.mapLinks(State.Places.data);
 
@@ -77,4 +76,4 @@ const Navigation = React.createClass({
   }
 });
 
-module.exports = Navigation;
+export default Navigation;

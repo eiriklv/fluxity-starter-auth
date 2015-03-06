@@ -1,8 +1,8 @@
 'use strict';
 
-const Place = require('../../models/place');
+import Place from '../../models/place';
 
-exports = module.exports = function(req, res) {
+export default function(req, res) {
   let userId = req.user ?
     req.user._id :
     req.query.id;
@@ -10,7 +10,7 @@ exports = module.exports = function(req, res) {
   Place.findOneByIdAndOwner({
     placeId: req.params.id,
     userId: userId
-  }, function(err, result) {
+  }, (err, result) => {
     if (err) {
       return res.status(400).send({
         err: err

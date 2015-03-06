@@ -1,9 +1,9 @@
 'use strict';
 
-module.exports = function(context, payload, done) {
-  done = done || function() {};
+export default (context, payload, done) => {
+  done = done || () => {};
 
-  context.Services.logIn(payload, function(err, result) {
+  context.Services.logIn(payload, (err, result) => {
     if (err) {
       context.Dispatcher.emit('ADD_ALERT', err);
       return done();

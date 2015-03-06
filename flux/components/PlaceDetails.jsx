@@ -1,10 +1,9 @@
 'use strict';
 
-const React = require('react');
-const Router = require('react-router');
-const DocumentTitle = require('react-document-title');
-const NotFound = require('./NotFound.jsx');
-const Loading = require('./Loading.jsx');
+import React from 'react';
+import DocumentTitle from 'react-document-title';
+import NotFound from './NotFound.jsx';
+import Loading from './Loading.jsx';
 
 const PlaceDetails = React.createClass({
   contextTypes: {
@@ -23,7 +22,7 @@ const PlaceDetails = React.createClass({
   },
 
   statics: {
-    willTransitionTo: function(transition, params, query, done) {
+    willTransitionTo(transition, params, query, done) {
       if (!transition.context.shouldUpdate) return done();
       
       transition.context.Actions.PopulateSelectedPlaceData({
@@ -33,7 +32,7 @@ const PlaceDetails = React.createClass({
     }
   },
 
-  render: function() {
+  render() {
     let State = this.props.State;
 
     if (State.PlaceDetails.isLoading) return <Loading />;
@@ -50,4 +49,4 @@ const PlaceDetails = React.createClass({
   }
 });
 
-module.exports = PlaceDetails;
+export default PlaceDetails;

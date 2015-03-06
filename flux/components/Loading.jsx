@@ -1,11 +1,11 @@
 'use strict';
 
-const React = require('react');
+import React from 'react';
 
 const Loading = React.createClass({
-  render: function() {
+  render() {
     return <h3>Loading...</h3>;
   }
 });
 
-module.exports = Loading;
+export default Loading;

@@ -1,80 +1,80 @@
 'use strict';
 
-const request = require('superagent');
-const apiUrl = process.env.API_URL;
-const places = require('./dummy-data').places;
-const user = require('./dummy-data').user;
+import request from 'superagent';
+import { places, user } from './dummy-data';
 
-module.exports.getPlaces = function(payload, cb) {
+const apiUrl = process.env.API_URL;
+
+export function getPlaces(payload, cb) {
   request
     .get(apiUrl + '/places')
     .query({
       id: payload.userId
     })
-    .end(function(err, res) {
+    .end((err, res) => {
       if (err) return cb(err);
       if (res.error) return cb(res.error);
       cb(null, res.body || []);
     });
 };
 
-module.exports.getPlaceDetails = function(payload, cb) {
+export function getPlaceDetails(payload, cb) {
   request
     .get(apiUrl + '/places/' + payload.params.id)
     .query({
       id: payload.userId
     })
-    .end(function(err, res) {
+    .end((err, res) => {
       if (err) return cb(err);
       if (res.error) return cb(res.error);
       cb(null, res.body || {});
     });
 };
 
-module.exports.getSession = function(user, cb) {
+export function getSession(user, cb) {
   if (user) return setImmediate(cb.bind(null, null, user));
 
   request
     .get(apiUrl + '/session')
-    .end(function(err, res) {
+    .end((err, res) => {
       if (err) return cb(err);
       if (res.error) return cb(res.error);
       cb(null, res.body || {});
     });
 };
 
-module.exports.signUp = function(payload, cb) {
+export function signUp(payload, cb) {
   request
     .post(apiUrl + '/signup')
     .send({
       email: payload.email,
       password: payload.password
     })
-    .end(function(err, res) {
+    .end((err, res) => {
       if (err) return cb(err);
       if (res.error) return cb(res.error);
       cb(null, res.body || {});
     });
 };
 
-module.exports.logIn = function(payload, cb) {
+export function logIn(payload, cb) {
   request
     .post(apiUrl + '/session')
     .send({
       email: payload.email,
       password: payload.password
     })
-    .end(function(err, res) {
+    .end((err, res) => {
       if (err) return cb(err);
       if (res.error) return cb(res.error);
       cb(null, res.body || {});
     });
 };
 
-module.exports.logOut = function(payload, cb) {
+export function logOut(payload, cb) {
   request
     .del(apiUrl + '/session')
-    .end(function(err, res) {
+    .end((err, res) => {
       if (err) return cb(err);
       if (res.error) return cb(res.error);
       cb(null, res.body || {});

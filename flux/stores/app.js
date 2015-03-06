@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = {
-  getInitialState: function() {
+export default {
+  getInitialState() {
     return {
       title: 'Some Places in Italy'
     };

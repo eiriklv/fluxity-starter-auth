@@ -1,15 +1,14 @@
 'use strict';
 
-const React  = require('react');
-const Router = require('react-router');
-const routes = require('./routes.jsx');
+import React from 'react';
+import Router from 'react-router';
+import Flux from 'fluxomorph';
+import routes from './routes.jsx';
+import * as stores from './stores';
+import * as actions from './actions';
+import * as services from './services';
 
-const Flux = require('fluxomorph');
-const stores = require('./stores');
-const actions = require('./actions');
-const services = require('./services');
-
-document.addEventListener('DOMContentLoaded', function(event) {
+document.addEventListener('DOMContentLoaded', (event) => {
   let initialContext = window.__initialContext || {};
 
   let flux = Flux({
@@ -29,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   flux.addToContext('Router', router);
   flux.addToContext('Services', services);
 
-  router.run(function(Handler, routerState) {
+  router.run((Handler, routerState) => {
     flux.enableUpdates(true);
 
     React.render(

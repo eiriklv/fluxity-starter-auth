@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = {
-  getInitialState: function() {
+export default {
+  getInitialState() {
     return {
       isLoading: false,
       notFound: false,
@@ -9,7 +9,7 @@ module.exports = {
     };
   },
   handlers: {
-    'ADD_PLACE_TO_LIST': function(context, payload) {
+    ADD_PLACE_TO_LIST(context, payload) {
       let newState = this.state.data.concat([payload]);
       
       this.replaceState({
@@ -18,7 +18,7 @@ module.exports = {
         data: newState
       });
     },
-    'REMOVE_PLACE_FROM_LIST': function(context, id) {
+    REMOVE_PLACE_FROM_LIST(context, id) {
       let place = this.state.data.slice().filter(function(place) {
         return place.id === id;
       })[0];
@@ -34,14 +34,14 @@ module.exports = {
         data: newState
       });
     },
-    'POPULATE_PLACES_DATA': function(context, payload) {
+    POPULATE_PLACES_DATA(context, payload) {
       this.replaceState({
         isLoading: false,
         notFound: false,
         data: payload
       });
     },
-    'POPULATE_PLACES_DATA_FAIL': function(context, payload) {
+    POPULATE_PLACES_DATA_FAIL(context, payload) {
       this.setState({
         notFound: true
       });

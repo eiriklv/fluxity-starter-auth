@@ -1,7 +1,6 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const ObjectId = mongoose.Types.ObjectId;
+import mongoose, { ObjectId } from 'mongoose';
 
 const schema = mongoose.Schema({
   id: {
@@ -44,4 +43,4 @@ schema.statics.findOneByIdAndOwner = function(payload, cb) {
   }, cb);
 }
 
-module.exports = mongoose.model('place', schema);
+export default mongoose.model('place', schema);

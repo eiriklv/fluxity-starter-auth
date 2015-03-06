@@ -1,10 +1,9 @@
 'use strict';
 
-const React = require('react');
-const Router = require('react-router');
-const DocumentTitle = require('react-document-title');
-const RouteHandler = Router.RouteHandler;
-const Navigation = require('./Navigation.jsx');
+import React from 'react';
+import DocumentTitle from 'react-document-title';
+import { RouteHandler } from 'react-router';
+import Navigation from './Navigation.jsx';
 
 const Places = React.createClass({
   contextTypes: {
@@ -52,4 +51,4 @@ const Places = React.createClass({
   }
 });
 
-module.exports = Places;
+export default Places;

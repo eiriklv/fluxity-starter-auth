@@ -1,27 +1,29 @@
 'use strict';
 
-const url = require('url');
-const config = require('./env');
-const debug = require('debug')('app:config');
-const express = require('express');
-const path = require('path');
-const logger = require('morgan');
-const cachebuster = require('./cachebuster');
-const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const RedisStore = require('connect-redis')(session);
-const passport = require('passport');
-const methodOverride = require('method-override');
+import url from 'url';
+import config from './env';
+import Debug from 'debug';
+import express from 'express';
+import path from 'path';
+import logger from 'morgan';
+import cachebuster from './cachebuster';
+import mongoose from 'mongoose';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
+import session from 'express-session';
+import connectRedis from 'connect-redis';
+import passport from 'passport';
+import methodOverride from 'method-override';
 
+const debug = Debug('app:config');
+const RedisStore = connectRedis(session);
 const app = express();
 
 function createSessionStore() {
-  var authObject;
+  let authObject;
 
   if ('production' == config.get('env')) {
-    var parsedUrl = url.parse(config.get('redis.url'));
+    let parsedUrl = url.parse(config.get('redis.url'));
 
     authObject = {
       prefix: config.get('redis.session.prefix'),
@@ -36,20 +38,16 @@ function createSessionStore() {
   } else {
     return (new session.MemoryStore());
   }
-};
+}
 
-module.exports.init = function() {
+export function init() {
   app.use(logger(app.get('env') === 'production' ? 'combined' : 'dev'));
-
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
     extended: true
   }));
-
   app.use(cookieParser());
-
   app.use(methodOverride('_method'));
-
   app.use(session({
     secret: config.get('session.secret'),
     store: createSessionStore(),
@@ -57,7 +55,6 @@ module.exports.init = function() {
     resave: true,
     saveUninitialized: true
   }));
-
   app.use(passport.initialize());
   app.use(passport.session());
 
@@ -77,62 +74,59 @@ module.exports.init = function() {
   if (app.get('env') === 'development') {
     require('./dev-tools');
 
-    app.use('/js', function(req, res) {
+    app.use('/js', (req, res) => {
       res.redirect('http://localhost:3001/js' + req.path);
     });
   }
 
   return app;
-};
+}
 
-module.exports.handleErrors = function(app) {
-  app.use(function(err, req, res, next) {
+export function handleErrors(app) {
+  app.use((err, req, res, next) => {
     res.status(500);
     console.log('error handler:', err);
     res.send('<pre>' + err.stack + '</pre>');
   });
 }
 
-module.exports.startServer = function(app, port) {
-  app.listen(config.get('port'), function() {
-    debug('Express ' + config.get('env') + ' server listening on port ' + this.address().port);
+export function startServer(app, port) {
+  app.listen(config.get('port'), () => {
+    debug('Express ' + config.get('env') + ' server listening on port ' + config.get('port'));
   });
-};
+}
 
-module.exports.connectToDatabase = function(url) {
+export function connectToDatabase(url) {
   function connect() {
     mongoose.connect(url);
   }
 
-  mongoose.connection.on('open', function(ref) {
+  mongoose.connection.on('open', (ref) => {
     debug('open connection to mongo server.');
   });
 
-  mongoose.connection.on('connected', function(ref) {
+  mongoose.connection.on('connected', (ref) => {
     debug('connected to mongo server.');
   });
 
-  mongoose.connection.on('disconnected', function(ref) {
+  mongoose.connection.on('disconnected', (ref) => {
     debug('disconnected from mongo server.');
-
     debug('retrying connection in 2 seconds..');
-    setTimeout(function() {
-      connect();
-    }.bind(this), 2000);
+    setTimeout(connect, 2000);
   });
 
-  mongoose.connection.on('close', function(ref) {
+  mongoose.connection.on('close', (ref) => {
     debug('closed connection to mongo server');
   });
 
-  mongoose.connection.on('error', function(err) {
+  mongoose.connection.on('error', (err) => {
     debug('error connection to mongo server!');
     debug(err);
   });
 
-  mongoose.connection.on('reconnect', function(ref) {
+  mongoose.connection.on('reconnect', (ref) => {
     debug('reconnect to mongo server.');
   });
 
   connect();
-};
+}

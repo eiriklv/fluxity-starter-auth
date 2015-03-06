@@ -1,9 +1,13 @@
 'use strict';
 
-var express = require('express');
-var router = express();
+import express from 'express';
 
-router.use(require('./routes/places-single')('/places/:id'));
-router.use(require('./routes/places-all')('/places'));
+import placesSingleRoutes from './routes/places-single';
+import placesAllRoutes from './routes/places-all';
 
-module.exports = router;
+const router = express();
+
+router.use(placesSingleRoutes('/places/:id'));
+router.use(placesAllRoutes('/places'));
+
+export default router;

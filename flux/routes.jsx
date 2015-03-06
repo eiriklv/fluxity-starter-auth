@@ -1,20 +1,16 @@
 'use strict';
 
-const React = require('react');
-const Router = require('react-router');
-const Route = Router.Route;
-const DefaultRoute = Router.DefaultRoute;
-const NotFoundRoute = Router.NotFoundRoute;
-
-const App = require('./components/App.jsx');
-const Home = require('./components/Home.jsx');
-const Places = require('./components/Places.jsx');
-const Landing = require('./components/Landing.jsx');
-const Login = require('./components/Login.jsx');
-const SignUp = require('./components/SignUp.jsx');
-const Index = require('./components/Index.jsx');
-const PlaceDetails = require('./components/PlaceDetails.jsx');
-const NotFound = require('./components/NotFound.jsx');
+import React from 'react';
+import { Route, DefaultRoute, NotFoundRoute } from 'react-router';
+import App from './components/App.jsx';
+import Home from './components/Home.jsx';
+import Places from './components/Places.jsx';
+import Landing from './components/Landing.jsx';
+import Login from './components/Login.jsx';
+import SignUp from './components/SignUp.jsx';
+import Index from './components/Index.jsx';
+import PlaceDetails from './components/PlaceDetails.jsx';
+import NotFound from './components/NotFound.jsx';
 
 const routes = (
   <Route name='app' path='/' handler={App}>
@@ -33,4 +29,4 @@ const routes = (
   </Route>
 );
 
-module.exports = routes;
+export default routes;

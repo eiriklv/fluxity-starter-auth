@@ -1,10 +1,10 @@
 'use strict';
 
-const React = require('react');
-const DocumentTitle = require('react-document-title');
+import React from 'react';
+import DocumentTitle from 'react-document-title';
 
 const NotFound = React.createClass({
-  render: function() {
+  render() {
     return (
       <DocumentTitle title={'Not found'}>
         <p>404 Not Found</p>
@@ -13,4 +13,4 @@ const NotFound = React.createClass({
   }
 });
 
-module.exports = NotFound;
+export default NotFound;

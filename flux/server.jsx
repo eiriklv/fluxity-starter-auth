@@ -1,17 +1,27 @@
 'use strict';
 
-const debug = require('debug')('app:server-render');
-const React = require('react');
-const Router = require('react-router');
-const DocumentTitle = require('react-document-title');
+import Debug from 'debug';
+import React from 'react';
+import Router from 'react-router';
+import DocumentTitle from 'react-document-title';
+import Flux from 'fluxomorph';
+import Html from './components/Html.jsx';
+import routes from './routes.jsx';
+import * as stores from './stores';
+import * as actions from './actions';
+import * as services from './services';
 
-const routes = require('./routes.jsx');
-const Html = require('./components/Html.jsx');
+const debug = Debug('app:server-render');
 
-const Flux = require('fluxomorph');
-const stores = require('./stores');
-const actions = require('./actions');
-const services = require('./services');
+const wrapCallback = function(cb) {
+  let count = 0;
+
+  return (err, redirect, html) => {
+    if ((count++) > 0) 
+      return debug('trying to call callback twice (res.send) - server.jsx');
+    cb(err, redirect, html);
+  };
+};
 
 const renderApp = function(req, callback) {
   let flux = Flux({
@@ -19,7 +29,7 @@ const renderApp = function(req, callback) {
     Actions: actions
   });
 
-  let cb = createCallback(callback);
+  let cb = wrapCallback(callback);
 
   let router = Router.create({
     routes: routes,
@@ -37,7 +47,7 @@ const renderApp = function(req, callback) {
     isLoggedIn: !!req.user
   });
 
-  router.run(function(Handler, routerState) {    
+  router.run((Handler, routerState) => {    
     let title = DocumentTitle.rewind();
     
     let markup = React.renderToString(
@@ -59,8 +69,8 @@ const renderApp = function(req, callback) {
   });
 };
 
-module.exports = function(req, res, next) {
-  renderApp(req, function(err, redirect, html) {
+export default function(req, res, next) {
+  renderApp(req, (err, redirect, html) => {
     if (err && err.notFound) return res.status(404).send(html);
     if (!err && redirect) return res.redirect(303, redirect.to);
     if (err) return next(err);
@@ -68,15 +78,3 @@ module.exports = function(req, res, next) {
     res.send(html);
   })
 };
-
-function createCallback(cb) {
-  let count = 0;
-
-  return function(err, redirect, html) {
-    if ((count++) < 1) {
-      cb(err, redirect, html);
-    } else {
-      debug('trying to call callback twice (res.send) - server.jsx');
-    }
-  };
-}

@@ -1,11 +1,9 @@
 'use strict';
 
-var React = require('react');
-var Router = require('react-router');
-var RouteHandler = Router.RouteHandler;
-var Flux = require('fluxomorph');
+import React from 'react';
+import { RouteHandler } from 'react-router';
 
-var Home = React.createClass({
+const Home = React.createClass({
   contextTypes: {
     Flux: React.PropTypes.shape({
       Actions: React.PropTypes.shape({
@@ -23,8 +21,8 @@ var Home = React.createClass({
   },
 
   statics: {
-    willTransitionTo: function(transition, params, query, done) {
-      transition.context.Actions.RefreshSession(function(err) {
+    willTransitionTo(transition, params, query, done) {
+      transition.context.Actions.RefreshSession((err) => {
         if (!transition.context.Stores.Auth.getState().isLoggedIn) {
           transition.redirect('/login');
         }
@@ -33,7 +31,7 @@ var Home = React.createClass({
     }
   },
 
-  render: function() {
+  render() {
     return (
       <RouteHandler
         State={this.props.State}
@@ -42,4 +40,4 @@ var Home = React.createClass({
   }
 });
 
-module.exports = Home;
+export default Home;
