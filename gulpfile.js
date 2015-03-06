@@ -21,6 +21,7 @@ const paths = {
   sass: 'style/main.scss',
   server: [
     'package.json',
+    'start.js',
     'app.js',
     'app-init-setup.js',
     'white-listed-env-vars.js',
