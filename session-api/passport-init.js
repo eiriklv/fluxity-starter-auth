@@ -1,12 +1,12 @@
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const UserModel = require('./models/user');
+import passport from 'passport';
+import { Strategy as LocalStrategy } from 'passport-local';
+import UserModel from './models/user';
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser((id, done) => {
   UserModel.findById(id, done);
 });
 

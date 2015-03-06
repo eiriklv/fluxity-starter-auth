@@ -1,10 +1,10 @@
 'use strict';
 
-const passport = require('passport');
-const async = require('async');
+import passport from 'passport';
+import async from 'async';
 
-exports = module.exports = function(req, res, next) {
-  passport.authenticate('local-login', function(err, user, info) {
+export default function(req, res, next) {
+  passport.authenticate('local-login', (err, user, info) => {
     if (err) return next(err);
 
     if (!user) {

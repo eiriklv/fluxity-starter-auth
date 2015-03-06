@@ -1,11 +1,13 @@
 'use strict';
 
-var express = require('express');
-var router = express();
+import express from 'express';
+import sessionRoutes from './routes/session';
+import signupRoutes from './routes/signup';
+import './passport-init';
 
-require('./passport-init');
+const router = express();
 
-router.use(require('./routes/session')('/session'));
-router.use(require('./routes/signup')('/signup'));
+router.use(sessionRoutes('/session'));
+router.use(signupRoutes('/signup'));
 
-module.exports = router;
+export default router;

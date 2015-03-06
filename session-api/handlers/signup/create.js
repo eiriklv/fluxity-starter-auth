@@ -1,9 +1,9 @@
 'use strict';
 
-const passport = require('passport');
+import passport from 'passport';
 
-exports = module.exports = function(req, res, next) {
-  passport.authenticate('local-signup', function(err, user, info) {
+export default function(req, res, next) {
+  passport.authenticate('local-signup', (err, user, info) => {
     if (err) return next(err);
 
     if (!user) {
@@ -13,7 +13,7 @@ exports = module.exports = function(req, res, next) {
       });
     }
 
-    req.logIn(user, function(err) {
+    req.logIn(user, (err) => {
       if (err) {
         return next(err);
       }

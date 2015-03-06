@@ -1,7 +1,5 @@
 'use strict';
 
-exports = module.exports = {
-  get: require('./get'),
-  create: require('./create'),
-  destroy: require('./destroy')
-};
+export { default as get } from './get';
+export { default as create } from './create';
+export { default as destroy } from './destroy';

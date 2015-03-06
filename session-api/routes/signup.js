@@ -1,11 +1,11 @@
 'use strict';
 
-var express = require('express');
-var router = express();
+import express from 'express';
+import * as handlers from '../handlers/signup';
 
-var handlers = require('../handlers/signup');
+const router = express();
 
-exports = module.exports = function(path) {
+export default function(path) {
   router.route(path)
     .post(handlers.create)
 

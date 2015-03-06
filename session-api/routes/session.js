@@ -1,11 +1,11 @@
 'use strict';
 
-var express = require('express');
-var router = express();
+import express from 'express';
+import * as handlers from '../handlers/session';
 
-var handlers = require('../handlers/session');
+const router = express();
 
-exports = module.exports = function(path) {
+export default function(path) {
   router.route(path)
     .get(handlers.get)
     .post(handlers.create)

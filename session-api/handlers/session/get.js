@@ -1,8 +1,8 @@
 'use strict';
 
-const passport = require('passport');
+import passport from 'passport';
 
-exports = module.exports = function(req, res, next) {
+export default function(req, res, next) {
   res.status(200).json({
     isLoggedIn: !!req.user,
     user: req.user

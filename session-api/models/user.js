@@ -1,9 +1,9 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 
-var schema = mongoose.Schema({
+const schema = mongoose.Schema({
   email: {
     type: String,
     required: true
@@ -25,7 +25,7 @@ schema.methods.validPassword = function(password) {
 schema.statics.login = function(req, email, password, done) {
   this.findOne({
     'email': email
-  }, function(err, user) {
+  }, (err, user) => {
     if (err) return done(err);
 
     if (!user) {
@@ -51,7 +51,7 @@ schema.statics.signup = function(req, email, password, done) {
 
   this.findOne({
     'email': email
-  }, function(err, user) {
+  }, (err, user) => {
     if (err) return done(err);
 
     if (user) {
@@ -64,7 +64,7 @@ schema.statics.signup = function(req, email, password, done) {
     newUser.email = email;
     newUser.password = newUser.generateHash(password);
 
-    newUser.save(function(err, product) {
+    newUser.save((err, product) => {
       if (err) return done(err);
 
       done(null, product, {
@@ -74,4 +74,4 @@ schema.statics.signup = function(req, email, password, done) {
   });
 }
 
-module.exports = mongoose.model('user', schema);
+export default mongoose.model('user', schema);

@@ -1,5 +1,3 @@
 'use strict';
 
-exports = module.exports = {
-  create: require('./create')
-};
+export { default as create } from './create';
