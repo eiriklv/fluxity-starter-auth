@@ -38,8 +38,8 @@ const PlaceDetailsController = React.createClass({
     return (
       <PlaceDetailsView
         data={{
-          name: this.props.State.PlaceDetails.name,
-          id: this.props.State.PlaceDetails.id
+          name: this.props.State.PlaceDetails.data.name,
+          id: this.props.State.PlaceDetails.data.id
         }}
       />
     );
