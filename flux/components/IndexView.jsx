@@ -2,7 +2,7 @@
 
 const React = require('react');
 
-const Index = React.createClass({
+const IndexView = React.createClass({
   render() {
     return (
       <p>Please select a place from the left.</p>
@@ -10,4 +10,4 @@ const Index = React.createClass({
   }
 });
 
-module.exports = Index;
+module.exports = IndexView;

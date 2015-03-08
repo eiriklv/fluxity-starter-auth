@@ -18,12 +18,16 @@ module.exports = {
     },
     SET_SELECTED_PLACE_AS_LOADING(context) {
       this.replaceState({
-        isLoading: true
+        isLoading: true,
+        notFound: false,
+        data: {}
       });
     },
     SET_SELECTED_PLACE_AS_NOT_FOUND(context) {
       this.replaceState({
-        notFound: true
+        isLoading: false,
+        notFound: true,
+        data: {}
       });
     }
   }

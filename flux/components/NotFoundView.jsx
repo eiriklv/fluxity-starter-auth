@@ -3,7 +3,7 @@
 const React = require('react');
 const DocumentTitle = require('react-document-title');
 
-const NotFound = React.createClass({
+const NotFoundView = React.createClass({
   render() {
     return (
       <DocumentTitle title={'Not found'}>
@@ -13,4 +13,4 @@ const NotFound = React.createClass({
   }
 });
 
-module.exports = NotFound;
+module.exports = NotFoundView;

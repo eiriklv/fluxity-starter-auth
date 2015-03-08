@@ -35,7 +35,7 @@ schema.statics.findOneByIdAndOwner = function(payload, cb) {
     var placeId = ObjectId(payload.placeId);
     var userId = ObjectId(payload.userId);
   } catch (e) {
-    return callback('invalid objectid supplied:', e);
+    return cb('invalid objectid supplied:', e);
   }
 
   this.findOne({

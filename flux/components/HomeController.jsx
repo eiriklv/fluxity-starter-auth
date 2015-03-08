@@ -4,16 +4,9 @@ const React = require('react');
 const Flux = require('fluxomorph');
 const { RouteHandler } = require('react-router');
 
-const Home = React.createClass({
+const HomeController = React.createClass({
   contextTypes: {
-    Flux: React.PropTypes.shape({
-      Actions: React.PropTypes.shape({
-        RefreshSession: React.PropTypes.func.isRequired
-      }),
-      Stores: React.PropTypes.shape({
-        Auth: React.PropTypes.object.isRequired
-      })
-    }),
+    Flux: React.PropTypes.object.isRequired,
     RouterState: React.PropTypes.object.isRequired
   },
 
@@ -41,4 +34,4 @@ const Home = React.createClass({
   }
 });
 
-module.exports = Home;
+module.exports = HomeController;

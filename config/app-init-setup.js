@@ -1,6 +1,7 @@
 'use strict';
 
 const url = require('url');
+const util = require('util');
 const config = require('./env');
 const debug = require('debug')('app:config');
 const express = require('express');
@@ -88,7 +89,7 @@ module.exports.init = function() {
 module.exports.handleErrors = function(app) {
   app.use(function(err, req, res, next) {
     res.status(500);
-    console.log('error handler:', err);
+    console.log('error handler:', util.inspect(err));
     res.send('<pre>' + err.stack + '</pre>');
   });
 }

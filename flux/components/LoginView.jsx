@@ -2,22 +2,25 @@
 
 const React = require('react');
 const DocumentTitle = require('react-document-title');
-const qs = require('qs');
 const { Link } = require('react-router');
 
-const apiUrl = process.env.API_URL;
-const successRedirect = 'http://localhost:3000/places';
-
-const Login = React.createClass({
-  contextTypes: {
-    Flux: React.PropTypes.object.isRequired,
-    RouterState: React.PropTypes.object.isRequired
+const LoginView = React.createClass({
+  propTypes: {
+    data: React.PropTypes.shape({
+      alerts: React.PropTypes.array.isRequired,
+      apiUrl: React.PropTypes.string.isRequired,
+      serverRedirect: React.PropTypes.string.isRequired
+    }),
+    actions: React.PropTypes.shape({
+      attemptLogin: React.PropTypes.func.isRequired,
+      dismissAlerts: React.PropTypes.func.isRequired
+    })
   },
 
   attemptLogin(e) {
     e.preventDefault();
 
-    this.context.Flux.Actions.AttemptLogin({
+    this.props.actions.attemptLogin({
       email: this.refs.email.getDOMNode().value,
       password: this.refs.password.getDOMNode().value
     });
@@ -26,20 +29,14 @@ const Login = React.createClass({
   dismissAlerts(e) {
     e.preventDefault();
 
-    this.context.Flux.Actions.DismissAlerts();
+    this.props.dismissAlerts();
   },
 
   renderAlerts() {
-    return this.props.State.Alerts.map(function(alert) {
+    return this.props.data.alerts.map(function(alert) {
       return (
         <p key={alert.id}>{alert.message}</p>
       );
-    });
-  },
-
-  getServerRedirect() {
-    return qs.stringify({
-      redirect: successRedirect
     });
   },
 
@@ -53,7 +50,7 @@ const Login = React.createClass({
             {this.renderAlerts()}
           </div>
 
-          <form method='POST' action={apiUrl + '/session?' + this.getServerRedirect()}>
+          <form method='POST' action={this.props.apiUrl + '/session?' + this.props.serverRedirect}>
             <div>
               <label>{'Email: '}</label>
               <p>
@@ -100,4 +97,4 @@ const Login = React.createClass({
   }
 });
 
-module.exports = Login;
+module.exports = LoginView;

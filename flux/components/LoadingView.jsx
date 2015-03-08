@@ -2,7 +2,7 @@
 
 const React = require('react');
 
-const Loading = React.createClass({
+const LoadingView = React.createClass({
   render() {
     return (
       <h3>Loading...</h3>
@@ -10,4 +10,4 @@ const Loading = React.createClass({
   }
 });
 
-module.exports = Loading;
+module.exports = LoadingView;

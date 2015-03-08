@@ -3,22 +3,16 @@
 const React = require('react');
 const DocumentTitle = require('react-document-title');
 const { RouteHandler } = require('react-router');
+const NavigationController = require('./NavigationController.jsx');
 
-const Navigation = require('./Navigation.jsx');
-
-const Places = React.createClass({
+const PlacesController = React.createClass({
   contextTypes: {
     Flux: React.PropTypes.object.isRequired,
     RouterState: React.PropTypes.object.isRequired
   },
 
   propTypes: {
-    State: React.PropTypes.shape({
-      App: React.PropTypes.any,
-      Alerts: React.PropTypes.any,
-      Places: React.PropTypes.any,
-      User: React.PropTypes.any
-    })
+    State: React.PropTypes.object.isRequired
   },
 
   statics: {
@@ -33,17 +27,15 @@ const Places = React.createClass({
   },
 
   render() {
-    let State = this.props.State;
-
     return (
-      <DocumentTitle title={State.App.title}>
+      <DocumentTitle title={this.props.State.App.title}>
         <div className='app'>
-          <Navigation
-            State={State}
+          <NavigationController
+            State={this.props.State}
           />
           <div className='detail'>
-            <RouteHandler 
-              State={State}
+            <RouteHandler
+              State={this.props.State}
             />
           </div>
         </div>
@@ -52,4 +44,4 @@ const Places = React.createClass({
   }
 });
 
-module.exports = Places;
+module.exports = PlacesController;

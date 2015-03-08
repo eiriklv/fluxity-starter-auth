@@ -2,22 +2,24 @@
 
 const React = require('react');
 const DocumentTitle = require('react-document-title');
-const qs = require('qs');
 const { Link } = require('react-router');
 
-const apiUrl = process.env.API_URL;
-const successRedirect = 'http://localhost:3000/places';
-
-const SignUp = React.createClass({
-  contextTypes: {
-    Flux: React.PropTypes.object.isRequired,
-    RouterState: React.PropTypes.object.isRequired
+const SignUpView = React.createClass({
+  propTypes: {
+    data: React.PropTypes.shape({
+      alerts: React.PropTypes.array.isRequired,
+      apiUrl: React.PropTypes.string.isRequired,
+      serverRedirect: React.PropTypes.string.isRequired
+    }),
+    actions: React.PropTypes.shape({
+      attemptSignup: React.PropTypes.func.isRequired
+    })
   },
 
   attemptSignup(e) {
     e.preventDefault();
 
-    this.context.Flux.Actions.AttemptSignup({
+    this.props.actions.attemptSignup({
       email: this.refs.email.getDOMNode().value,
       password: this.refs.password.getDOMNode().value
     });
@@ -26,18 +28,12 @@ const SignUp = React.createClass({
   dismissAlerts(e) {
     e.preventDefault();
 
-    this.context.Flux.Actions.DismissAlerts();
+    this.actions.dismissAlerts();
   },
 
-  renderAlerts() {
-    return this.props.State.Alerts.map(function(alert) {
+  renderAlerts(alerts) {
+    return alerts.map(function(alert) {
       return <p key={alert.id}>{alert.message}</p>
-    });
-  },
-
-  getServerRedirect() {
-    return qs.stringify({
-      redirect: successRedirect
     });
   },
 
@@ -48,10 +44,10 @@ const SignUp = React.createClass({
           <h1>Signup page</h1>
 
           <div onClick={this.dismissAlerts}>
-            {this.renderAlerts()}
+            {this.renderAlerts(this.props.data.alerts)}
           </div>
 
-          <form method='POST' action={apiUrl + '/signup?' + this.getServerRedirect()}>
+          <form method='POST' action={this.props.data.apiUrl + '/signup?' + this.props.data.serverRedirect}>
             <div>
               <label>{'Email: '}</label>
               <p>
@@ -98,4 +94,4 @@ const SignUp = React.createClass({
   }
 });
 
-module.exports = SignUp;
+module.exports = SignUpView;

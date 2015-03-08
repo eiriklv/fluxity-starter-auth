@@ -4,7 +4,7 @@ const React = require('react');
 const DocumentTitle = require('react-document-title');
 const { Link } = require('react-router');
 
-const Landing = React.createClass({
+const LandingView = React.createClass({
   render() {
     return (
       <DocumentTitle title={'Landing'}>
@@ -19,4 +19,4 @@ const Landing = React.createClass({
   }
 });
 
-module.exports = Landing;
+module.exports = LandingView;

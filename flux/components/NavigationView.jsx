@@ -1,29 +1,23 @@
 'use strict';
 
 const React = require('react');
-const qs = require('qs');
 const { Link } = require('react-router');
 
-const apiUrl = process.env.API_URL;
-const successRedirect = 'http://localhost:3000/login';
-
-const Navigation = React.createClass({
-  contextTypes: {
-    Flux: React.PropTypes.object.isRequired,
-    RouterState: React.PropTypes.object.isRequired
-  },
-
+const NavigationView = React.createClass({
   propTypes: {
-    State: React.PropTypes.shape({
-      Places: React.PropTypes.any.isRequired,
-      App: React.PropTypes.any.isRequired
+    data: React.PropTypes.shape({
+      places: React.PropTypes.array.isRequired,
+      apiUrl: React.PropTypes.string.isRequired,
+      serverRedirect: React.PropTypes.string.isRequired
+    }),
+    actions: React.PropTypes.shape({
+      attemptLogout: React.PropTypes.func.isRequired
     })
   },
 
   attemptLogout(e) {
     e.preventDefault();
-
-    this.context.Flux.Actions.AttemptLogout();
+    this.props.actions.attemptLogout();
   },
 
   mapLinks(places) {
@@ -38,19 +32,12 @@ const Navigation = React.createClass({
     }.bind(this));
   },
 
-  getServerRedirect() {
-    return qs.stringify({
-      redirect: successRedirect
-    });
-  },
-
   render() {
-    let { State } = this.props;
-    let links = this.mapLinks(State.Places.data);
+    let links = this.mapLinks(this.props.data.places);
 
     return (
       <div className='navigation'>
-        <h1>{State.App.title}</h1>
+        <h1>{this.props.data.title}</h1>
         <ul className='master'>
           {links}
           <Link to='index'>
@@ -62,7 +49,7 @@ const Navigation = React.createClass({
           </Link>
           <br />
 
-          <form method='POST' action={apiUrl + '/session?_method=DELETE&' + this.getServerRedirect()}>
+          <form method='POST' action={this.props.apiUrl + '/session?_method=DELETE&' + this.props.serverRedirect}>
             <input
               onClick={this.attemptLogout}
               type='submit'
@@ -76,4 +63,4 @@ const Navigation = React.createClass({
   }
 });
 
-module.exports = Navigation;
+module.exports = NavigationView;
