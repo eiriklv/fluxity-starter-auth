@@ -16,6 +16,7 @@ const Html = React.createClass({
           <title>{this.props.title}</title>
           <link rel='icon' type='image/png' href='/images/favicon.png' />
           <link rel='stylesheet' href='/css/main.css' />
+          <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css' />
           <script src='/js/lib.js'></script>
           <script src='/js/main.js'></script>
           <script dangerouslySetInnerHTML={{__html: '__initialContext = ' + JSON.stringify(this.props.__initialContext)}} />
