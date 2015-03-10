@@ -4,6 +4,9 @@ const React = require('react');
 const DocumentTitle = require('react-document-title');
 const { Link } = require('react-router');
 
+const AlertBox = require('./AlertBox.jsx');
+const SignUpForm = require('./SignUpForm.jsx');
+
 const SignUpView = React.createClass({
   propTypes: {
     data: React.PropTypes.shape({
@@ -12,81 +15,39 @@ const SignUpView = React.createClass({
       serverRedirect: React.PropTypes.string.isRequired
     }),
     actions: React.PropTypes.shape({
-      attemptSignup: React.PropTypes.func.isRequired
+      attemptSignup: React.PropTypes.func.isRequired,
+      dismissAlerts: React.PropTypes.func.isRequired
     })
-  },
-
-  attemptSignup(e) {
-    e.preventDefault();
-
-    this.props.actions.attemptSignup({
-      email: this.refs.email.getDOMNode().value,
-      password: this.refs.password.getDOMNode().value
-    });
-  },
-
-  dismissAlerts(e) {
-    e.preventDefault();
-
-    this.actions.dismissAlerts();
-  },
-
-  renderAlerts(alerts) {
-    return alerts.map(function(alert) {
-      return <p key={alert.id}>{alert.message}</p>
-    });
   },
 
   render() {
     return (
       <DocumentTitle title={'Signup'}>
         <div className='app'>
+          
           <h1>Signup page</h1>
 
-          <div onClick={this.dismissAlerts}>
-            {this.renderAlerts(this.props.data.alerts)}
-          </div>
+          <SignUpForm
+            data={{
+              apiUrl: this.props.data.apiUrl,
+              serverRedirect: this.props.data.serverRedirect
+            }}
+            actions={{
+              attemptSignup: this.props.actions.attemptSignup
+            }}
+          />
 
-          <form method='POST' action={this.props.data.apiUrl + '/signup?' + this.props.data.serverRedirect}>
-            <div>
-              <label>{'Email: '}</label>
-              <p>
-                <input
-                  type='email'
-                  name='email'
-                  ref='email'
-                  defaultValue={''}
-                />
-              </p>
-              <label>{'Password: '}</label>
-              <p>
-                <input
-                  type='password'
-                  name='password'
-                  ref='password'
-                  defaultValue={''}
-                />
-              </p>
-              <p>
-                <input
-                  onClick={this.attemptSignup}
-                  type='submit'
-                  name='commit'
-                  value='Login'
-                />
-              </p>
-            </div>
-          </form>
+          <p><Link to='landing'>{'Go back to landing!'}</Link></p>
+          <p><Link to='login'>{'Go to login!'}</Link></p>
 
-          <Link to='landing'>
-            {'Go back to landing!'}
-          </Link>
-
-          <br />
-
-          <Link to='login'>
-            {'Go to login!'}
-          </Link>
+          <AlertBox
+            data={{
+              alerts: this.props.data.alerts
+            }}
+            actions={{
+              dismissAlerts:this.props.actions.dismissAlerts
+            }}
+          />
 
         </div>
       </DocumentTitle>

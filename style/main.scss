@@ -1,6 +1,6 @@
-@import "../node_modules/material-ui-sass/material-ui";
-
-body {}
+body {
+	font-family: "Avenir Next";
+}
 
 h1, h2 {
 	font-weight: 200;
@@ -23,4 +23,20 @@ h2 {
 	img {
 		width: 600px;
 	}
+}
+
+.example-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+  &.example-enter-active {
+    opacity: 1;
+  }
+}
+
+.example-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+  &.example-leave-active {
+    opacity: 0.01;
+  }
 }
