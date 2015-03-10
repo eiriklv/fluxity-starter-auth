@@ -77,6 +77,11 @@ h2 {
   flex-direction: column;
 }
 
+.HolyGrail-header {
+  background: rgba(147, 128, 108, 0.1);
+  text-align: center;
+}
+
 .HolyGrail-header, .HolyGrail-footer {
   flex: none;
 }
