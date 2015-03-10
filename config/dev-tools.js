@@ -44,7 +44,7 @@ const renderSass = function(filename) {
   });
 };
 
-chokidar.watch(__dirname + '/../style', {
+chokidar.watch('./style', {
   ignored: /[\/\\]\./
 }).on('all', function(event, filename) {
   let ext = filename.split('/').pop().split('.').pop();
