@@ -18,11 +18,14 @@ const AlertBox = React.createClass({
   },
 
   renderAlerts() {
+    if (!this.props.data.alerts.length)
+      return <p key={'dummy'}>{'Everything is OK!'}</p>
+
     return this.props.data.alerts.map(function(alert) {
       return (
         <p key={alert.id}>{alert.message}</p>
       );
-    });
+    }).reverse()[0];
   },
 
   render() {

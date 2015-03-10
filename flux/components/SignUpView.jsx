@@ -23,31 +23,34 @@ const SignUpView = React.createClass({
   render() {
     return (
       <DocumentTitle title={'Signup'}>
-        <div className='app'>
-          
-          <h1>Signup page</h1>
+        <div className='center-container'>
+          <div className='center-item'>
+            <h1>Signup page</h1>
 
-          <SignUpForm
-            data={{
-              apiUrl: this.props.data.apiUrl,
-              serverRedirect: this.props.data.serverRedirect
-            }}
-            actions={{
-              attemptSignup: this.props.actions.attemptSignup
-            }}
-          />
+            <SignUpForm
+              data={{
+                apiUrl: this.props.data.apiUrl,
+                serverRedirect: this.props.data.serverRedirect
+              }}
+              actions={{
+                attemptSignup: this.props.actions.attemptSignup
+              }}
+            />
 
-          <p><Link to='landing'>{'Go back to landing!'}</Link></p>
-          <p><Link to='login'>{'Go to login!'}</Link></p>
+            <p><Link to='landing'>{'Go back to landing!'}</Link></p>
+            <p><Link to='login'>{'Go to login!'}</Link></p>
+          </div>
 
-          <AlertBox
-            data={{
-              alerts: this.props.data.alerts
-            }}
-            actions={{
-              dismissAlerts:this.props.actions.dismissAlerts
-            }}
-          />
+          <div className='center-item'>
+            <AlertBox
+              data={{
+                alerts: this.props.data.alerts
+              }}
+              actions={{
+                dismissAlerts:this.props.actions.dismissAlerts
+              }}
+            />
+          </div>
 
         </div>
       </DocumentTitle>

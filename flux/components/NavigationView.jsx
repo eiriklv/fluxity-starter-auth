@@ -36,8 +36,7 @@ const NavigationView = React.createClass({
     let links = this.mapLinks(this.props.data.places);
 
     return (
-      <div className='navigation'>
-        <h1>{this.props.data.title}</h1>
+      <nav className='HolyGrail-nav u-textCenter'>
         <ul className='master'>
           {links}
           <Link to='index'>
@@ -53,12 +52,11 @@ const NavigationView = React.createClass({
             <input
               onClick={this.attemptLogout}
               type='submit'
-              name='commit'
               value='Log out'
             />
           </form>
         </ul>
-      </div>
+      </nav>
     );
   }
 });

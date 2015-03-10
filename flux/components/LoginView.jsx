@@ -23,32 +23,35 @@ const LoginView = React.createClass({
   render() {
     return (
       <DocumentTitle title={'Login'}>
-        <div className='app'>
-          
-          <h1>Login page</h1>
+        <div className='center-container'>
+          <div className='center-item'>
+            <h1>Login page</h1>
 
-          <LoginForm
-            data={{
-              apiUrl: this.props.data.apiUrl,
-              serverRedirect: this.props.data.serverRedirect
-            }}
-            actions={{
-              attemptLogin: this.props.actions.attemptLogin
-            }}
-          />
+            <LoginForm
+              data={{
+                apiUrl: this.props.data.apiUrl,
+                serverRedirect: this.props.data.serverRedirect
+              }}
+              actions={{
+                attemptLogin: this.props.actions.attemptLogin
+              }}
+            />
 
-          <p><Link to='landing'>{'Go back to landing!'}</Link></p>
-          <p><Link to='signup'>{'Go to signup!'}</Link></p>
+            <p><Link to='landing'>{'Go back to landing!'}</Link></p>
+            <p><Link to='signup'>{'Go to signup!'}</Link></p>
+          </div>
 
-          <AlertBox
-            data={{
-              alerts: this.props.data.alerts
-            }}
-            actions={{
-              dismissAlerts:this.props.actions.dismissAlerts
-            }}
-          />
-
+          <div className='center-item'>
+            <AlertBox
+              className='center-item'
+              data={{
+                alerts: this.props.data.alerts
+              }}
+              actions={{
+                dismissAlerts:this.props.actions.dismissAlerts
+              }}
+            />
+          </div>
         </div>
       </DocumentTitle>
     );

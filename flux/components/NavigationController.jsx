@@ -27,7 +27,6 @@ const NavigationController = React.createClass({
       <NavigationView
         data={{
           apiUrl: apiUrl,
-          title: this.props.State.App.title,
           places: this.props.State.Places.data,
           serverRedirect: qs.stringify({
             redirect: successRedirect

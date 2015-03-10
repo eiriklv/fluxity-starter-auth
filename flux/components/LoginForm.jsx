@@ -37,35 +37,37 @@ const LoginForm = React.createClass({
 
   render() {
     return (
-      <form method='POST' action={this.props.data.apiUrl + '/session?' + this.props.data.serverRedirect}>
-        <div>
-          <label>{'Email: '}</label>
-          <p>
-            <input
-              type='text'
-              name='email'
-              value={this.state.email}
-              onChange={this.handleFormChange.bind(this, 'email')}
-            />
-          </p>
-          <label>{'Password: '}</label>
-          <p>
-            <input
-              type='password'
-              name='password'
-              value={this.state.password}
-              onChange={this.handleFormChange.bind(this, 'password')}
-            />
-          </p>
-          <p>
-            <input
-              onClick={this.attemptLogin}
-              type='submit'
-              value='Login'
-            />
-          </p>
-        </div>
-      </form>
+      <div className='login-form-box'>
+        <form method='POST' action={this.props.data.apiUrl + '/session?' + this.props.data.serverRedirect}>
+          <div>
+            <label>{'Email: '}</label>
+            <p>
+              <input
+                type='text'
+                name='email'
+                value={this.state.email}
+                onChange={this.handleFormChange.bind(this, 'email')}
+              />
+            </p>
+            <label>{'Password: '}</label>
+            <p>
+              <input
+                type='password'
+                name='password'
+                value={this.state.password}
+                onChange={this.handleFormChange.bind(this, 'password')}
+              />
+            </p>
+            <p>
+              <input
+                onClick={this.attemptLogin}
+                type='submit'
+                value='Login'
+              />
+            </p>
+          </div>
+        </form>
+      </div>
     );
   }
 });

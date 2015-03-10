@@ -14,7 +14,7 @@ const PlaceDetailsView = React.createClass({
   render() {
     return (
       <DocumentTitle title={this.props.data.name}>
-        <div className='place'>
+        <div className='place-details-box'>
           <h2>{this.props.data.name}</h2>
           <img src={'/images/' + this.props.data.id + '.jpg'}/>
         </div>
