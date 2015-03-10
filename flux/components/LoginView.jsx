@@ -74,7 +74,6 @@ const LoginView = React.createClass({
                 <input
                   onClick={this.attemptLogin}
                   type='submit'
-                  name='commit'
                   value='Login'
                 />
               </p>

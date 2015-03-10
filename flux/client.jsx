@@ -1,5 +1,7 @@
 'use strict';
 
+require('react-tap-event-plugin')();
+
 const React  = require('react');
 const Router = require('react-router');
 const Flux = require('fluxomorph');
