@@ -36,7 +36,7 @@ const NavigationView = React.createClass({
     let links = this.mapLinks(this.props.data.places);
 
     return (
-      <nav className='HolyGrail-nav u-textCenter'>
+      <nav className='HolyGrail-nav'>
         <ul className='master'>
           {links}
           <Link to='index'>
