@@ -16,6 +16,7 @@ const Html = React.createClass({
           <title>{this.props.title}</title>
           <link rel='icon' type='image/png' href='/images/favicon.png' />
           <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css' />
+          <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css' />
           <link rel='stylesheet' href='/css/main.css' />
           <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css' />
           <script src='/js/lib.js'></script>
