@@ -23,7 +23,10 @@ const Html = React.createClass({
           <script src='/js/main.js'></script>
           <script dangerouslySetInnerHTML={{__html: '__initialContext = ' + JSON.stringify(this.props.__initialContext)}} />
         </head>
-        <body dangerouslySetInnerHTML={{__html: this.props.markup}}></body>
+        
+        <body>
+          <div id='app' dangerouslySetInnerHTML={{__html: this.props.markup}} />
+        </body>
       </html>
     );
   }
