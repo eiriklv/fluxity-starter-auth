@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         Flux={flux.getContext()}
         RouterState={routerState}
       />,
-      document.body
+      document.querySelector('#app')
     );
   });
 });
