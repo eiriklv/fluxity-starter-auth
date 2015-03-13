@@ -22,7 +22,7 @@ export DEBUG=app:* \
 export API_URL=http://localhost:3000/api \
 export MONGO_URL=mongodb://localhost/fluxity-starter \
 
-./node_modules/nodemon/bin/nodemon.js ./app.js
+./node_modules/nodemon/bin/nodemon.js ./start.js
 ```
 
 #### Production script
@@ -33,7 +33,7 @@ export DEBUG=* \
 export API_URL=http://localhost:3000/api \
 export MONGO_URL=mongodb://localhost/fluxity-starter \
 
-gulp build && node build/app.js
+gulp build && node build/start.js
 ```
 
 #### Credits
