@@ -23,7 +23,7 @@ const LoginView = React.createClass({
   render() {
     return (
       <DocumentTitle title={'Login'}>
-        <div className='container text-center'>
+        <div className='container'>
           <div className='row'>
             <h1>Login page</h1>
 

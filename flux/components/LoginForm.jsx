@@ -39,24 +39,26 @@ const LoginForm = React.createClass({
     return (
       <form method='POST' action={this.props.data.apiUrl + '/session?' + this.props.data.serverRedirect}>
         <div className='row'>
-          <label className='form-label'>{'Email: '}</label>
-          <input
-            className='twelve column'
-            type='text'
-            name='email'
-            value={this.state.email}
-            onChange={this.handleFormChange.bind(this, 'email')}
-          />
-        </div>
-        <div className='row'>
-          <label className='form-label'>{'Password: '}</label>
-          <input
-            className='twelve column'
-            type='password'
-            name='password'
-            value={this.state.password}
-            onChange={this.handleFormChange.bind(this, 'password')}
-          />
+          <div className='six columns'>
+            <label>{'Email: '}</label>
+            <input
+              className='twelve columns'
+              type='text'
+              name='email'
+              value={this.state.email}
+              onChange={this.handleFormChange.bind(this, 'email')}
+            />
+          </div>
+          <div className='six columns'>
+            <label>{'Password: '}</label>
+            <input
+              className='twelve columns'
+              type='password'
+              name='password'
+              value={this.state.password}
+              onChange={this.handleFormChange.bind(this, 'password')}
+            />
+          </div>
         </div>
         <div className='row'>
           <input
