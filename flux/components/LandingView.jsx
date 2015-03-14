@@ -8,14 +8,20 @@ const LandingView = React.createClass({
   render() {
     return (
       <DocumentTitle title={'Landing'}>
-        <div className='container text-center'>
-          <div className='row'>
-            <h1>Landing Page</h1>
-            <Link to='places'>
-              {'Go look at the places!'}
+
+        <div className='section'>
+          <div className='container'>
+            <h3 className='section-heading'>{'Landing page'}</h3>
+            <p className='section-description'>{'Wanna see the real stuff?'}</p>
+            <Link
+              className='button button-primary'
+              to='places'
+            >
+              {'Enter the service!'}
             </Link>
           </div>
         </div>
+
       </DocumentTitle>
     );
   }
