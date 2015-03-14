@@ -23,8 +23,8 @@ const LoginView = React.createClass({
   render() {
     return (
       <DocumentTitle title={'Login'}>
-        <div className='center-container'>
-          <div className='center-item'>
+        <div className='container text-center'>
+          <div className='row'>
             <h1>Login page</h1>
 
             <LoginForm
@@ -41,9 +41,8 @@ const LoginView = React.createClass({
             <p><Link to='signup'>{'Go to signup!'}</Link></p>
           </div>
 
-          <div className='center-item'>
+          <div className='row'>
             <AlertBox
-              className='center-item'
               data={{
                 alerts: this.props.data.alerts
               }}

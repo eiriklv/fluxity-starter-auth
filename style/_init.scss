@@ -1,0 +1,22 @@
+html {
+  height: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+  &::after, &::before {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  font-family: "Avenir Next";
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  height: 100%;
+}

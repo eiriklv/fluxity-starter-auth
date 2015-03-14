@@ -1,25 +1,5 @@
-html {
-  height: 100%;
-  text-rendering: optimizeLegibility;
-}
-
-* {
-  box-sizing: border-box;
-  &::after, &::before {
-    box-sizing: border-box;
-  }
-}
-
-body {
-  font-family: "Avenir Next";
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-#app {
-  height: 100%;
-}
+@import 'init';
+@import 'skeleton';
 
 h1, h2 {
   font-weight: 200;
@@ -44,86 +24,6 @@ h2 {
   }
 }
 
-.center-container {
-  background-color: #eee;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  min-height: 100%;
-}
-
-.center-item {
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-
-  padding: 25px;
-  margin: 20px;
-  border-radius: 10px;
-  box-shadow: 5px 4px 3px #ddd;
-}
-
-.place-details-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.HolyGrail {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-}
-
-.HolyGrail-header {
-  background: rgba(147, 128, 108, 0.1);
+.text-center {
   text-align: center;
-}
-
-.HolyGrail-header, .HolyGrail-footer {
-  flex: none;
-}
-
-.HolyGrail-body {
-  display: flex;
-  flex: 1 0 auto;
-  flex-direction: column;
-  padding: 1.5em;
-}
-
-.HolyGrail-content {
-  margin-top: 1.5em;
-}
-
-.HolyGrail-nav {
-  order: -1;
-  padding: 1em;
-  border-radius: 3px;
-  background: rgba(147, 128, 108, 0.1);
-}
-
-.HolyGrail-ads {
-  padding: 1em;
-  border-radius: 3px;
-  background: rgba(147, 128, 108, 0.1);
-}
-
-@media (min-width: 768px) {
-  .HolyGrail-body {
-    flex-direction: row;
-  }
-  .HolyGrail-content {
-    flex: 1;
-    padding: 0 2em;
-    margin: 0;
-  }
-  .HolyGrail-nav, .HolyGrail-ads {
-    flex: 0 0 12em;
-  }
 }

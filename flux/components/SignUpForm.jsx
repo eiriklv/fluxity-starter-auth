@@ -37,37 +37,35 @@ const SignUpForm = React.createClass({
 
   render() {
     return (
-      <div className='signup-form-box'>
-        <form method='POST' action={this.props.data.apiUrl + '/signup?' + this.props.data.serverRedirect}>
-          <div>
-            <label>{'Email: '}</label>
-            <p>
-              <input
-                type='text'
-                name='email'
-                value={this.state.email}
-                onChange={this.handleFormChange.bind(this, 'email')}
-              />
-            </p>
-            <label>{'Password: '}</label>
-            <p>
-              <input
-                type='password'
-                name='password'
-                value={this.state.password}
-                onChange={this.handleFormChange.bind(this, 'password')}
-              />
-            </p>
-            <p>
-              <input
-                onClick={this.attemptSignup}
-                type='submit'
-                value='Sign Up'
-              />
-            </p>
-          </div>
-        </form>
-      </div>
+      <form method='POST' action={this.props.data.apiUrl + '/signup?' + this.props.data.serverRedirect}>
+        <div className='row'>
+          <label className='form-label'>{'Email: '}</label>
+          <input
+            className='twelve column'
+            type='text'
+            name='email'
+            value={this.state.email}
+            onChange={this.handleFormChange.bind(this, 'email')}
+          />
+        </div>
+        <div className='row'>
+          <label className='form-label'>{'Password: '}</label>
+          <input
+            className='twelve column'
+            type='password'
+            name='password'
+            value={this.state.password}
+            onChange={this.handleFormChange.bind(this, 'password')}
+          />
+        </div>
+        <div className='row'>
+          <input
+            onClick={this.attemptSignup}
+            type='submit'
+            value='Sign up'
+          />
+        </div>
+      </form>
     );
   }
 });

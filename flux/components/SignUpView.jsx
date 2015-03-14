@@ -23,8 +23,8 @@ const SignUpView = React.createClass({
   render() {
     return (
       <DocumentTitle title={'Signup'}>
-        <div className='center-container'>
-          <div className='center-item'>
+        <div className='container text-center'>
+          <div className='row'>
             <h1>Signup page</h1>
 
             <SignUpForm
@@ -41,7 +41,7 @@ const SignUpView = React.createClass({
             <p><Link to='login'>{'Go to login!'}</Link></p>
           </div>
 
-          <div className='center-item'>
+          <div className='row'>
             <AlertBox
               data={{
                 alerts: this.props.data.alerts
