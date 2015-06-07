@@ -37,7 +37,10 @@ const LoginForm = React.createClass({
 
   render() {
     return (
-      <form method='POST' action={this.props.data.apiUrl + '/session?' + this.props.data.serverRedirect}>
+      <form
+        method='POST'
+        action={this.props.data.apiUrl + '/session?' + this.props.data.serverRedirect}
+      >
         <div className='row'>
           <div className='six columns'>
             <label>{'Email: '}</label>

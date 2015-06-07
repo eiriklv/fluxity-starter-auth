@@ -48,7 +48,10 @@ const NavigationView = React.createClass({
           </Link>
           <br />
 
-          <form method='POST' action={this.props.apiUrl + '/session?_method=DELETE&' + this.props.serverRedirect}>
+          <form
+            method='POST'
+            action={this.props.apiUrl + '/session?_method=DELETE&' + this.props.serverRedirect}
+          >
             <input
               onClick={this.attemptLogout}
               type='submit'
